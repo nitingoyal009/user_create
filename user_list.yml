@@ -1,11 +1,11 @@
 ---
 users:
-        - name: ram
+        - name: ram1
           first: ram
           last: kumar
-          uid: 1040
+          uid: 1010
 
-        - name: shyam
+        - name: shyam1
           first: shyam
           last: kumar
-          uid: 1050
+          uid: 1020
