@@ -1,20 +1,18 @@
 ---
-- name: Create users
-  hosts: all
-  gather_facts: false
+- name: create users
+  hosts: test
   vars_files:
-        - user_list.yml
+          - user_list.yml
   tasks:
-          - name: create user
+          - name: create users
             vars:
                     password: "{{ lookup('password', './{{ item.name }}-password.txt length=6')}}"
             user:
                     name: "{{ item.name }}"
                     uid: "{{ item.uid }}"
                     comment: "{{ item.first }} {{ item.last }}"
-                    password: "{{ password|password_hash('sha512') }}"
+                    password: "{{ password|password_hash('sha512')}}"
+                    update_password: on_create
                     state: present
-                    shell: /bin/bash
             with_items: "{{ users }}"
-
 
